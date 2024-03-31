@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Phone Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h2>Phone List</h2>
+    
+    <form action="#" th:action="@{/search}" th:object="${searchCommand}" method="post">
+		<input type="text" value="search text" th:field="*{text}"/>
+	</form>
+	
+	<div th:unless="${searchResult} == null" th:text="${searchResult}"></div>
+    
+    <div th:if="${not #lists.isEmpty(phoneList)}">
+    
+    <table class="table table-striped">
+    
+    		<tr th:each="phone, iterStat : ${phoneList}" th:if="${iterStat.index%5 == 0}">
+    			<td th:if="${#lists.size(phoneList)} &gt; ${iterStat.index}">
+   				<table>
+			    		<tr>
+				    		<td><img th:src="@{/resources/images/iphone.png}" /></td>
+				    		<td>
+					    		<div th:utext="${phoneList[iterStat.index].brand.name} + '</br>' + ${phoneList[iterStat.index].model}" th:remove="tag"></div>
+				    		</td>
+			    		</tr>
+		    		</table>
+		    	</td>
+			<td th:if="${#lists.size(phoneList)} &gt; ${iterStat.index+1}">
+   				<table>
+			    		<tr>
+				    		<td><img th:src="@{/resources/images/iphone.png}" /></td>
+				    		<td>
+					    		<div th:utext="${phoneList[iterStat.index+1].brand.name} + '</br>' + ${phoneList[iterStat.index+1].model}" th:remove="tag"></div>
+				    		</td>
+			    		</tr>
+		    		</table>
+		    	</td>		    		
+		    	<td th:if="${#lists.size(phoneList)} &gt; ${iterStat.index+2}">
+   				<table>
+			    		<tr>
+				    		<td><img th:src="@{/resources/images/iphone.png}" /></td>
+				    		<td>
+					    		<div th:utext="${phoneList[iterStat.index+2].brand.name} + '</br>' + ${phoneList[iterStat.index+2].model}" th:remove="tag"></div>
+				    		</td>
+			    		</tr>
+		    		</table>
+		    	</td>
+		    	<td th:if="${#lists.size(phoneList)} &gt; ${iterStat.index+3}">
+   				<table>
+			    		<tr>
+				    		<td><img th:src="@{/resources/images/iphone.png}" /></td>
+				    		<td>
+					    		<div th:utext="${phoneList[iterStat.index+3].brand.name} + '</br>' + ${phoneList[iterStat.index+3].model}" th:remove="tag"></div>
+				    		</td>
+			    		</tr>
+		    		</table>
+		    	</td>
+		    	<td th:if="${#lists.size(phoneList)} &gt; ${iterStat.index+4}">
+   				<table>
+			    		<tr>
+				    		<td><img th:src="@{/resources/images/iphone.png}" /></td>
+				    		<td>
+					    		<div th:utext="${phoneList[iterStat.index+4].brand.name} + '</br>' + ${phoneList[iterStat.index+4].model}" th:remove="tag"></div>
+				    		</td>
+			    		</tr>
+		    		</table>
+		    	</td>    		
+    		</tr>
+     </table>
+</div>
+
+</body>
+</html>
