@@ -13,21 +13,21 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "phone", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Phone {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length=11, nullable=false, unique=true)
+	@Column(name = "id", length=11, nullable=false, unique=true)
 	private Integer id;
-	
+
 	@Column(name = "model", length=50, nullable=false)
 	private String model;
-	
+
 	@ManyToOne
-    @JoinColumn(name="brand_id", nullable=false)
+	@JoinColumn(name="brand_id", nullable=false)
 	private Brand brand;
 
 	public Phone() {}
-	
+
 	public Phone(Integer id, String model)
 	{
 		this.id = id;
@@ -56,5 +56,10 @@ public class Phone {
 
 	public void setBrand(Brand brand) {
 		this.brand = brand;
+	}
+
+	@Override
+	public String toString() {
+		return "Phone [id=" + id + ", model=" + model + "]";
 	}
 }
