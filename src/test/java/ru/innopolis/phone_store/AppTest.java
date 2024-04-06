@@ -3,11 +3,17 @@ package ru.innopolis.phone_store;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@SpringBootApplication
+@EnableJpaAuditing
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
     extends TestCase
 {
     /**
@@ -35,4 +41,14 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    public class PhoneStoreApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(PhoneStoreApplication.class, args);
+        }
+
+    }
+
+
 }
