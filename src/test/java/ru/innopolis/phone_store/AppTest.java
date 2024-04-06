@@ -3,52 +3,43 @@ package ru.innopolis.phone_store;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@SpringBootApplication
-@EnableJpaAuditing
+public class AppTest extends TestCase {
 
-/**
- * Unit test for simple App.
- */
-public class AppTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    public AppTest(String testName) {
+        super(testName);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    public static Test suite() {
+        return new TestSuite(AppTest.class);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testApp() {
+        assertTrue(true);
     }
 
-    public class PhoneStoreApplication {
-
-        public static void main(String[] args) {
-            SpringApplication.run(PhoneStoreApplication.class, args);
-        }
-
+    public void testAddition() {
+        int result = 2 + 2;
+        assertEquals(4, result);
     }
 
+    public void testMultiplication() {
+        int result = 3 * 5;
+        assertEquals(15, result);
+    }
 
+    public void testStringLength() {
+        String str = "Hello";
+        assertEquals(5, str.length());
+    }
+
+    public void testArraySize() {
+        int[] array = {1, 2, 3, 4, 5};
+        assertEquals(5, array.length);
+    }
+
+    public void testNotNull() {
+        Object obj = new Object();
+        assertNotNull(obj);
+    }
 }
