@@ -17,14 +17,14 @@ public class Brand {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length=11, nullable=false, unique=true)
+	@Column(name = "id", length=11, nullable=false, unique=true)
 	private Integer id;
-	
+
 	@Column(name = "name", length=30, nullable=true)
 	private String name;
-	
+
 	@OneToMany(mappedBy="brand")
-    private Set<Phone> phones;
+	private Set<Phone> phones;
 
 	public Integer getId() {
 		return id;
@@ -48,5 +48,10 @@ public class Brand {
 
 	public void setItems(Set<Phone> phones) {
 		this.phones = phones;
+	}
+
+	@Override
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + "]";
 	}
 }
