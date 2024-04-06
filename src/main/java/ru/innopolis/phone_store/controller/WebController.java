@@ -14,24 +14,24 @@ import ru.innopolis.phone_store.model.Phone;
 import ru.innopolis.phone_store.model.SearchCommand;
 import ru.innopolis.phone_store.service.PhoneService;
 
-
 @Controller
+@RequestMapping("/")
 public class WebController {
-	
+
 	@Resource
 	PhoneService phoneService;
-	
+
 	@GetMapping ("/")
 	public String playGame(Model model) {
 		List<Phone> phoneList = phoneService.getAllPhones();
 		model.addAttribute("phoneList", phoneList);
 		model.addAttribute("searchCommand", new SearchCommand());
 		return "index";
-		
+
 	}
-	
+
 	@PostMapping("/search")
-    public String searchSubmit(ModelMap model,@ModelAttribute SearchCommand searchCommand) {
+	public String searchSubmit(ModelMap model,@ModelAttribute SearchCommand searchCommand) {
 		List<Phone> result = new ArrayList<Phone>();
 		if(!searchCommand.getText().isEmpty())
 		{
@@ -40,8 +40,8 @@ public class WebController {
 				model.addAttribute("phoneList", result);
 			else
 			{
-	 			model.addAttribute("searchResult", "No item found!");
-	 			model.addAttribute("phoneList", new ArrayList<Phone>());
+				model.addAttribute("searchResult", "No item found!");
+				model.addAttribute("phoneList", new ArrayList<Phone>());
 			}
 			return "index";
 		}
